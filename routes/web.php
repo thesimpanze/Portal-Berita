@@ -23,5 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('/debug-image', function() {
+    $path = 'images/TiOqfk7lqM90eDLupLChseSFYEq9yZb2B4PUo22e.png';
+    return [
+        'exists' => Storage::disk('public')->exists($path),
+        'url' => Storage::url($path),
+        'full_path' => storage_path('app/public/' . $path),
+        'public_path' => public_path('storage/images/TiOqfk7lqM90eDLupLChseSFYEq9yZb2B4PUo22e.png'),
+        'file_exists' => file_exists(public_path('storage/images/TiOqfk7lqM90eDLupLChseSFYEq9yZb2B4PUo22e.png'))
+    ];
+});
 require __DIR__.'/auth.php';

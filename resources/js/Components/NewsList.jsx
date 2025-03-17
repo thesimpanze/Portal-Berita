@@ -2,13 +2,14 @@ import { Link } from "@inertiajs/react";
 import moment from "moment";
 
 const isNews = (news) => {
+    console.log("data dari isNews", news);
     return news.map((data, i) => {
         return (
             <div
                 className=" flex md:w-3/4 justify-center items-center text-black full  "
                 key={i}
             >
-                <div className=" mb-9  items-center justify-center    md:flex text-left p-3 w-11/12 ">
+                <div className=" mb-9 outline outline-2 rounded-sm shadow-lg items-center justify-center md:flex text-left p-3 w-11/12 ">
                     <div className="md:w-3/4">
                         <div className=" md:w-3/4 items-center justify-center">
                             <Link
@@ -24,7 +25,7 @@ const isNews = (news) => {
                                         <p className=" h-12 md:h-28 hover:text-clip md:mt-3 overflow-auto md:overflow-hidden">
                                             {data.description}
                                         </p>
-                                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
+                                       
                                     </div>
                                     <span className="flex justify-between mt-0 font-semibold">
                                         <p className="capitalize md:mt-6 mt-2 mb-4 md:mb-0">
@@ -40,11 +41,11 @@ const isNews = (news) => {
                             </Link>
                         </div>
                     </div>
-                    <div className="md:w-2/6 bg-red-400  ">
+                    <div className="md:w-3/6 bg-red-400  ">
                         <img
                             src={data.image ? `/storage/${data.image}` : 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'}
                             alt=""
-                            className=" w-80 items-stretch"
+                            className=" w-full items-stretch"
                         />
                     </div>
                     <hr />

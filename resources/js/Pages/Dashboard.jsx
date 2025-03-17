@@ -122,21 +122,24 @@ export default function Dashboard({ auth, flash, myNews }) {
                                             {open && (
                                                 <div className="fixed bg-black/35 top-0 flex justify-center w-full h-screen items-center z-40" onClick={() =>setOpen(false)}>
                                                     <div className="bg-white border-2 border-black rounded-sm w-2/4 h-3/5 text-center text-black justify-center items-center flex" onClick={(e) =>e.stopPropagation()}>
-                                                        <div className="">
+                                                        <div className=" gap-11 flex flex-col">
                                                             <div className="">
-                                                                <h1 className="mb-9 font-extrabold text-2xl">Apakah anda yakin ingin menghapus?</h1>
+                                                                <h1 className=" font-extrabold text-3xl">Apakah anda yakin ingin menghapus?</h1>
                                                             </div>
+                                                            <div className="">
+                                                                
                                                             <div className="flex justify-center">
-                                                                    <span className="bg-red-600 py-1 w-11/12 font-bold  rounded-full cursor-pointer" >
+                                                                    <span className="bg-red-600 py-2 w-72 font-bold  rounded-full cursor-pointer" >
                                                                 <Link href={route("DeleteNews")}method="post"data={{id: news.id,}} onClick={() => closeModal()}>
-                                                                        <button className="text-xl">Yeah, Sure</button>
+                                                                        <button className=" text-white">Yeah, Sure</button>
                                                                 </Link>
                                                                     </span>
                                                             </div>
                                                             <div className="flex justify-center mt-3">
-                                                                <span className="border-red-500 py-1 w-11/12 border-2 font-bold bg-white  rounded-full cursor-pointer" onClick={() =>setOpen(false)}>
-                                                                    <button className="text-xl">Nope, I don't</button>
+                                                                <span className="border-red-500 py-2 w-72 border-2 font-bold bg-white  rounded-full cursor-pointer" onClick={() =>setOpen(false)}>
+                                                                    <button className="">Nope, I don't</button>
                                                                 </span>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                     </div>
