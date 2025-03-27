@@ -24,21 +24,27 @@ const Navbar = ({ user }) => {
                     <div
                         tabIndex={0}
                         role="button"
-                        className="btn btn-ghost btn-circle avatar"
+                        className=""
                     >
-                        <div className="w-10 rounded-full">
+                        {user ? (
+                            <div className="w-10 rounded-full">
                             <img
                                 alt="foto"
                                 src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                            />
-                        </div>
+                                />
+                        </div>) : (
+                            <div className=" text-white text-sm font-bold m-3 px-2 py-1 bg-black">
+
+                                Masuk?
+                                </div>)
+                            }
                     </div>
                     <ul
                         tabIndex={0}
                         className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-white text-black  w-52"
                     >
                         {!user ? (
-                            <>
+                            <div className="">
                                 <li>
                                     <Link href={route("login")}>Login</Link>
                                 </li>
@@ -47,7 +53,7 @@ const Navbar = ({ user }) => {
                                         Register
                                     </Link>
                                 </li>
-                            </>
+                            </div>
                         ) : (
                             <>
                                 <li>

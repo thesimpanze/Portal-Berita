@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -38,6 +38,24 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],[
+            'title.required' => 'Judul tidak boleh kosong',
+            'description.required' => 'Deskripsi tidak boleh kosong',
+            'category.required' => 'Kategori tidak boleh kosong',
+            'image.required' => 'Gambar tidak boleh kosong',
+            'image.image' => 'File harus berupa gambar',
+            'image.mimes' => 'File harus berupa gambar',
+            'image.max' => 'Ukuran gambar terlalu besar',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $path = null;
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('images', 'public');

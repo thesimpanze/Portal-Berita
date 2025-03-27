@@ -10,7 +10,7 @@ export default function Dashboard({ auth, flash, myNews }) {
     const [image, setImage] = useState(null);
     const [isNotif, setIsNotif] = useState(false);
     const [open, setOpen] = useState(false);
-    console.log("flash", flash);
+    
 
     const handleSubmit = () => {
         const formData = new FormData();
@@ -35,39 +35,13 @@ export default function Dashboard({ auth, flash, myNews }) {
 
         return;
     }, []);
-    console.log("data wdwa:", myNews);
+    console.log(flash);
     return (
         <div className="">
             <AuthenticatedLayout user={auth.user}>
                 <Head title="Dashboard" />
-                {/* START FLASH BERITA INPUT */}
                 <div className="py-12">
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        {isNotif && (
-                            <div className="flex justify-center">
-                                <div
-                                    role="alert"
-                                    className="mt-10 font-bold text-lg absolute border-black border-2 alert alert-success w-11/12"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="stroke-current shrink-0 h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                    </svg>
-                                    <span>Berita berhasil di publish</span>
-                                </div>
-                            </div>
-                        )}
-                        {/* END FLASH BERITA INPUT */}
-
                         {/* START INPUT BERITA */}
                         <div className="bg-white overflow-hidden text-black text-base shadow-sm sm:rounded-sm border-2 border-black">
                             <h1 className="ml-4 mt-3 text-2xl font-bold">
